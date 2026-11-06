@@ -1,0 +1,560 @@
+
+/* ==================================
+   NEXAQUEST — TELA DE INSCRIÇÃO
+   ================================== */
+
+
+:root {
+    --roxo: #721ABF;
+    --roxo-escuro: #551887;
+    --roxo-profundo: #551887;
+    --creme: #F0EEE4;
+    --verde: #98D611;
+    --branco: #FFFFFF;
+    --texto: #FFFFFF;
+    --texto-suave: #F0EEE4;
+    --campo: #551887;
+    --violeta: #8A2BE2;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--roxo);
+    color: var(--texto);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+}
+
+/* Estrutura principal */
+
+.pagina-cadastro {
+    display: grid;
+    grid-template-columns: 38% 62%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Painel claro com curva */
+
+.painel-marca {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 35px;
+    background: var(--creme);
+    color: var(--roxo-escuro);
+    border-radius: 0 45% 45% 0 / 0 22% 22% 0;
+    z-index: 2;
+}
+
+.marca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.marca-icone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 104px;
+    height: 76px;
+    margin-bottom: 12px;
+    border: 3px solid var(--roxo-escuro);
+    background: var(--creme);
+}
+
+.marca-icone::before {
+    position: absolute;
+    content: "";
+    top: -3px;
+    left: 49%;
+    width: 3px;
+    height: 76px;
+    background: var(--roxo-escuro);
+}
+
+.controle {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    border: 3px solid var(--roxo-escuro);
+    border-radius: 50%;
+    background: var(--creme);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.controle-um {
+    top: -15px;
+    left: 8px;
+}
+
+.controle-dois {
+    right: 5px;
+    bottom: -12px;
+    width: 43px;
+    height: 43px;
+    font-size: 23px;
+}
+
+.marca h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.marca p {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Painel roxo */
+
+
+.painel-formulario {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 26px 7% 35px 3%;
+
+}
+
+
+/* Navegação superior */
+
+.menu-superior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+    max-width: 480px;
+    padding: 5px;
+    border-radius: 30px;
+    background: var(--verde);
+}
+
+.etapa {
+    padding: 9px 12px;
+    width: 130px;
+    border-radius: 20px;
+    color: var(--roxo-escuro);
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.etapa:hover,
+.etapa.ativa {
+    background: var(--roxo-escuro);
+    color: var(--verde);
+}
+
+/* Conteúdo do formulário */
+
+
+.formulario-conteudo {
+    width: 100%;
+    max-width: 440px;
+    margin: 35px auto 0;
+    padding: 20px 10px 2px;
+    box-sizing: border-box;
+}
+
+.subtitulo {
+    margin: 0 0 10px;
+    color: var(--verde);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.formulario-conteudo h2 {
+    margin: 0;
+    color: var(--branco);
+    font-size: clamp(29px, 4vw, 38px);
+    letter-spacing: -1px;
+}
+
+.descricao {
+    max-width: 390px;
+    margin: 13px 0 26px;
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Campos */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 17px;
+}
+
+.campo label {
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 15px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    outline: none;
+    background: var(--campo);
+    color: var(--branco);
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input::placeholder {
+    color: #c4b0e9;
+}
+
+.campo input:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(200, 255, 50, 0.15);
+}
+
+/* Aceite da política */
+
+.termos {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 21px 0;
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.7;
+    cursor: pointer;
+}
+
+.termos input {
+    flex: 0 0 auto;
+    width: 15px;
+    height: 15px;
+    margin: 2px 0 0;
+    accent-color: var(--verde);
+}
+
+.termos a,
+.login a {
+    color: var(--verde);
+    font-weight: bold;
+}
+
+/* Botão principal */
+
+.botao-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: var(--verde);
+    color: var(--roxo-escuro);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.botao-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 22px rgba(20, 0, 50, 0.25);
+}
+
+.botao-principal:focus-visible,
+.botao-alternativo:focus-visible,
+.etapa:focus-visible {
+    outline: 3px solid var(--branco);
+    outline-offset: 4px;
+}
+
+/* Cadastro alternativo */
+
+.separador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0 16px;
+    color: var(--texto-suave);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.separador::before,
+.separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.acessos-alternativos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.botao-alternativo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 43px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    background: var(--roxo-escuro);
+    color: var(--branco);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.botao-alternativo:hover {
+    background: #41158a;
+}
+
+.simbolo-google {
+    color: var(--verde);
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.simbolo-apple {
+    color: var(--verde);
+    font-size: 17px;
+}
+
+/* Rodapé do formulário */
+
+.login {
+    margin: 23px 0;
+    color: var(--texto-suave);
+    font-size: 12px;
+    text-align: center;
+}
+
+.aviso {
+    margin: 20px 0 0;
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Adaptação para telas menores */
+
+@media (max-width: 800px) {
+    .pagina-cadastro {
+        grid-template-columns: 1fr;
+        overflow: visible;
+    }
+
+    .painel-marca {
+        min-height: 220px;
+        padding: 35px 20px 45px;
+        border-radius: 0 0 50% 12% / 0 0 18% 8%;
+    }
+
+    .marca-icone {
+        transform: scale(0.8);
+        margin-bottom: 3px;
+    }
+
+    .marca h1 {
+        font-size: 24px;
+    }
+
+    .marca p {
+        font-size: 10px;
+    }
+
+    .painel-formulario {
+        padding: 22px 7% 35px;
+    }
+
+    .menu-superior {
+        max-width: 440px;
+    }
+
+    .formulario-conteudo {
+        max-width: 440px;
+        padding-top: 35px;
+    }
+}
+
+@media (max-width: 420px) {
+    .painel-marca {
+        min-height: 190px;
+    }
+
+    .painel-formulario {
+        padding-right: 6%;
+        padding-left: 6%;
+    }
+
+    .etapa {
+        padding: 8px;
+        font-size: 10px;
+    }
+
+    .formulario-conteudo h2 {
+        font-size: 30px;
+    }
+
+    .acessos-alternativos {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ===== FOOTER DO NEXAQUEST ===== */
+
+.footer-site {
+    position: relative;
+    z-index: 3;
+    padding: 28px 7% 16px;
+    background: #551887;
+    color: #F0EEE4;
+}
+
+.footer-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 22px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-marca h2 {
+    margin: 0;
+    color: #F0EEE4;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.footer-marca h2 span {
+    color: #98D611;
+}
+
+.footer-marca p {
+    margin: 5px 0 0;
+    color: #F0EEE4;
+    font-size: 12px;
+}
+
+.footer-frase {
+    max-width: 260px;
+    margin: 0;
+    color: #F0EEE4;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.footer-links a {
+    color: #98D611;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #F0EEE4;
+    text-decoration: underline;
+}
+
+.footer-base {
+    max-width: 1200px;
+    margin: 22px auto 0;
+    padding-top: 15px;
+    border-top: 1px solid #721ABF;
+    text-align: center;
+}
+
+.footer-base p {
+    margin: 0;
+    color: #F0EEE4;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* Adaptação para celulares */
+
+@media (max-width: 800px) {
+    .footer-site {
+        padding: 28px 6% 18px;
+    }
+
+    .footer-conteudo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .footer-links {
+        justify-content: center;
+        gap: 15px;
+    }
+}

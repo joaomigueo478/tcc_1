@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NexaQuest | Aprenda. Jogue. Evolua.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================= */
+
+        :root {
+            --fundo: #17151b;
+            --painel: #201d25;
+            --painel-claro: #29252f;
+            --creme: #F0EEE4;
+            --verde: #98D611;
+            --roxo-escuro: #551887;
+            --roxo: #721ABF;
+            --violeta: #8A2BE2;
+            --texto-suave: #aaa3b3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background:
+                radial-gradient(ellipse at 50% 20%, #3c2e4b 0%, transparent 55%),
+                radial-gradient(ellipse at 10% 80%, #21142c 0%, transparent 50%),
+                var(--fundo);
+            color: var(--creme);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1100px, 88%);
+            margin: auto;
+        }
+
+        .etiqueta {
+            color: var(--verde);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        header {
+            width: min(1100px, 88%);
+            margin: auto;
+            padding: 35px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--verde);
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--texto-suave);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--verde);
+        }
+
+        /* =========================
+           APRESENTAÇÃO
+        ========================= */
+
+        .apresentacao {
+            min-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 70px 20px;
+        }
+
+        .apresentacao-conteudo {
+            max-width: 750px;
+        }
+
+        .apresentacao h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            font-weight: 800;
+            letter-spacing: 8px;
+            line-height: 1;
+            margin: 25px 0;
+        }
+
+        .apresentacao h1 span {
+            color: var(--verde);
+        }
+
+        .subtitulo {
+            color: var(--texto-suave);
+            font-size: 11px;
+            letter-spacing: 4px;
+            line-height: 2;
+            text-transform: uppercase;
+        }
+
+        .descricao-principal {
+            color: #c4becb;
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 480px;
+            margin: 25px auto 35px;
+        }
+
+        .botao {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--verde);
+            color: var(--creme);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .botao:hover {
+            background: var(--verde);
+            color: var(--fundo);
+            transform: translateY(-3px);
+        }
+
+        .mascote {
+            position: absolute;
+            right: 10%;
+            bottom: 50px;
+            font-size: 55px;
+            opacity: .8;
+            filter: drop-shadow(0 0 20px #721ABF);
+        }
+
+        /* =========================
+           INFORMAÇÕES SUPERIORES
+        ========================= */
+
+        .informacoes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-top: 1px solid #ffffff12;
+            border-bottom: 1px solid #ffffff12;
+            margin-bottom: 90px;
+        }
+
+        .informacoes div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .informacoes small {
+            color: var(--texto-suave);
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .informacoes strong {
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        .cor-destaque {
+            width: 35px;
+            height: 35px;
+            background: var(--verde);
+            border-radius: 50%;
+            box-shadow: 0 0 25px #98D61155;
+        }
+
+        /* =========================
+           SEÇÕES EM PAINÉIS
+        ========================= */
+
+        .projeto {
+            background:
+                linear-gradient(120deg, #25212b, #17151b 70%);
+            border: 1px solid #ffffff12;
+            min-height: 420px;
+            margin-bottom: 110px;
+            padding: 35px 45px;
+            position: relative;
+            box-shadow: 0 25px 60px #00000035;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .projeto::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #721ABF12, transparent 55%);
+            pointer-events: none;
+        }
+
+        .numero {
+            position: absolute;
+            left: -30px;
+            bottom: 0;
+            color: var(--texto-suave);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .titulo-secao h2 {
+            font-size: clamp(25px, 4vw, 40px);
+            letter-spacing: 4px;
+            margin-top: 15px;
+        }
+
+        .titulo-secao p:last-child {
+            color: var(--texto-suave);
+            font-size: 12px;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           CARDS DE DISCIPLINAS
+        ========================= */
+
+        .disciplinas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .disciplina {
+            min-height: 150px;
+            padding: 25px 15px;
+            background: #ffffff08;
+            border: 1px solid #ffffff15;
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .disciplina:hover {
+            background: #721ABF30;
+            border-color: var(--violeta);
+            transform: translateY(-5px);
+        }
+
+        .disciplina .icone {
+            font-size: 30px;
+        }
+
+        .disciplina h3 {
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .disciplina p {
+            font-size: 10px;
+            color: var(--texto-suave);
+        }
+
+        .disciplina-destaque {
+            border-color: var(--verde);
+        }
+
+        /* =========================
+           SOBRE O PROJETO
+        ========================= */
+
+        .sobre-conteudo {
+            max-width: 650px;
+        }
+
+        .sobre-conteudo h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: 3px;
+            margin: 20px 0;
+        }
+
+        .sobre-conteudo p {
+            font-size: 12px;
+            color: var(--texto-suave);
+            line-height: 2;
+        }
+
+        .destaque {
+            color: var(--verde);
+        }
+
+        /* =========================
+           CONTATO
+        ========================= */
+
+        .contato {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            width: 100%;
+            text-align: left;
+            align-items: center;
+        }
+
+        .contato-info h2 {
+            font-size: 30px;
+            letter-spacing: 3px;
+            margin: 15px 0 25px;
+        }
+
+        .contato-info p {
+            color: var(--texto-suave);
+            font-size: 11px;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        .contato-item {
+            margin-top: 22px;
+        }
+
+        .contato-item strong {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .contato-item span {
+            color: var(--texto-suave);
+            font-size: 10px;
+        }
+
+        .formulario {
+            background: #ffffff06;
+            border: 1px solid #ffffff12;
+            padding: 35px;
+            box-shadow: 0 15px 35px #00000030;
+        }
+
+        .formulario h2 {
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .formulario input,
+        .formulario textarea {
+            display: block;
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ffffff30;
+            padding: 15px 5px;
+            margin-bottom: 12px;
+            color: white;
+            outline: none;
+            font-size: 11px;
+        }
+
+        .formulario input:focus,
+        .formulario textarea:focus {
+            border-color: var(--verde);
+        }
+
+        .formulario textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .formulario button {
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 80px 20px 45px;
+        }
+
+        footer h2 {
+            font-size: 25px;
+            letter-spacing: 4px;
+            margin: 15px 0;
+        }
+
+        footer p {
+            color: var(--texto-suave);
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .rodape-logo {
+            margin-top: 35px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .rodape-logo span {
+            color: var(--verde);
+        }
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            nav {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .apresentacao {
+                min-height: 500px;
+            }
+
+            .apresentacao h1 {
+                letter-spacing: 3px;
+            }
+
+            .mascote {
+                display: none;
+            }
+
+            .informacoes {
+                margin-bottom: 65px;
+            }
+
+            .projeto {
+                padding: 35px 20px;
+                margin-bottom: 80px;
+            }
+
+            .disciplinas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contato {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .contato-info {
+                text-align: center;
+            }
+
+            .formulario {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 8px;
+            }
+
+            .informacoes strong {
+                font-size: 11px;
+            }
+
+            .disciplinas {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo-secao h2 {
+                letter-spacing: 2px;
+            }
+
+            .projeto {
+                min-height: 400px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header>
+        <a href="#" class="logo">NEXA<span>QUEST.</span></a>
+
+        <nav>
+            <a href="inicio.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="sobre.html">Sobre nós</a>
+            <a href="inscricao.html">login</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- APRESENTAÇÃO -->
+
+        <section class="apresentacao" id="inicio">
+
+            <div class="apresentacao-conteudo">
+
+                <p class="etiqueta">UMA NOVA FORMA DE APRENDER</p>
+
+                <h1>NEXA<span>QUEST</span></h1>
+
+                <p class="subtitulo">
+                    APRENDA. JOGUE. EVOLUA.
+                </p>
+
+                <p class="descricao-principal">
+                    Transforme seus estudos em uma aventura.
+                    Explore disciplinas, enfrente desafios e
+                    descubra até onde seu conhecimento pode levar você.
+                </p>
+
+                <a href="inscricao.html" class="botao">
+                    Começar jornada →
+                </a>
+
+            </div>
+
+            <div class="mascote">🦎</div>
+
+        </section>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="container">
+
+            <section class="informacoes">
+
+                <div>
+                    <small>PLATAFORMA</small>
+                    <strong>NEXAQUEST</strong>
+                </div>
+
+                <div>
+                    <small>PROPÓSITO</small>
+                    <strong>EDUCAÇÃO</strong>
+                </div>
+
+                <div>
+                    <small>IDENTIDADE</small>
+                    <div class="cor-destaque"></div>
+                </div>
+
+            </section>
+
+
+            <!-- DISCIPLINAS -->
+
+            <section class="projeto" id="disciplinas">
+
+                <span class="numero">.01</span>
+
+                <div class="titulo-secao">
+                    <p class="etiqueta">SUA PRÓXIMA MISSÃO</p>
+                    <h2>EXPLORE O CONHECIMENTO</h2>
+                    <p>
+                        Escolha uma disciplina e comece a sua jornada.
+                    </p>
+                </div>
+
+                <div class="disciplinas">
+
+                    <a href="atividade.html" class="disciplina disciplina-destaque">
+                        <span class="icone">📖</span>
+                        <h3>PORTUGUÊS</h3>
+                        <p>Desafie seu conhecimento.</p>
+                    </a>
+
+                    <a href="#" class="disciplina">
+                        <span class="icone">🔢</span>
+                        <h3>MATEMÁTICA</h3>
+                        <p>Em breve.</p>
+                    </a>
+
+                    <a href="#" class="disciplina">
+                        <span class="icone">🧪</span>
+                        <h3>CIÊNCIAS</h3>
+                        <p>Em breve.</p>
+                    </a>
+
+                </div>
+
+                <a href="atividade.html" class="botao">
+                    Iniciar desafio →
+                </a>
+
+            </section>
+
+
+            <!-- SOBRE -->
+
+            <section class="projeto" id="sobre">
+
+                <span class="numero">.02</span>
+
+                <div class="sobre-conteudo">
+
+                    <p class="etiqueta">CONHEÇA O NEXAQUEST</p>
+
+                    <h2>APRENDER NUNCA FOI TÃO <span class="destaque">DIVERTIDO.</span></h2>
+
+                    <p>
+                        O NexaQuest é uma plataforma educacional que une
+                        aprendizado e elementos de jogos para tornar
+                        os estudos mais dinâmicos e interessantes.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Aqui, cada desafio é uma oportunidade de aprender,
+                        cada conquista representa uma evolução e cada
+                        estudante é protagonista da própria jornada.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTATO -->
+
+            <section class="projeto" id="contato">
+
+                <span class="numero">.03</span>
+
+                <div class="contato">
+
+                    <div class="contato-info">
+
+                        <p class="etiqueta">FALE CONOSCO</p>
+
+                        <h2>CONTATO</h2>
+
+                        <p>
+                            Tem alguma dúvida, sugestão ou ideia?
+                            Queremos ouvir você! Entre em contato
+                            com a equipe NexaQuest.
+                        </p>
+
+                        <div class="contato-item">
+                            <strong>Projeto</strong>
+                            <span>NexaQuest — Aprenda. Jogue. Evolua.</span>
+                        </div>
+
+                        <div class="contato-item">
+                            <strong>E-mail</strong>
+                            <span>contato@nexaquest.com</span>
+                        </div>
+
+                    </div>
+
+
+                    <form class="formulario" action="#" method="post">
+
+                        <h2>ENVIE UMA MENSAGEM</h2>
+
+                        <input
+                            type="text"
+                            name="nome"
+                            placeholder="Seu nome"
+                            required
+                        >
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Seu e-mail"
+                            required
+                        >
+
+                        <textarea
+                            name="mensagem"
+                            placeholder="Sua mensagem"
+                            required
+                        ></textarea>
+
+                        <button type="submit" class="botao">
+                            Enviar mensagem →
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <p>O FIM DESTA PÁGINA É APENAS O COMEÇO</p>
+
+        <h2>OBRIGADO POR VISITAR!</h2>
+
+        <p>CONTINUE APRENDENDO. CONTINUE EVOLUINDO.</p>
+
+        <div class="rodape-logo">
+            NEXA<span>QUEST.</span>
+        </div>
+
+        <p style="margin-top: 20px;">
+            © 2026 NexaQuest. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+</body>
+</html>

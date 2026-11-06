@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NexaQuest | Aprenda jogando</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <a class="logo" href="{{ url_for('index') }}">NexaQuest<span>.</span></a>
+
+        <nav class="navegacao">
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="#disciplinas">Disciplinas</a>
+            <a href="#sobre">Sobre nós</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="apresentacao">
+            <div class="apresentacao-conteudo">
+                <p class="etiqueta">APRENDER PODE SER UMA AVENTURA</p>
+
+                <h1>Conhecimento na ponta da <span>Língua</span></h1>
+
+                <p class="descricao">
+                    Explore disciplinas, enfrente desafios e aprenda
+                    algo novo a cada fase no universo NexaQuest.
+                </p>
+
+                <a class="botao" href="#disciplinas">
+                    Explorar disciplinas
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="mascote" aria-hidden="true">
+                <div class="mascote-emoji">🦎</div>
+                <div class="mascote-legenda">
+                    <strong>Prepare-se para a missão!</strong>
+                    <span>Aprenda. Jogue. Evolua.</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="disciplinas" class="secao-disciplinas">
+            <div class="titulo-secao">
+                <p class="etiqueta">SUA PRÓXIMA MISSÃO</p>
+                <h2>Escolha uma disciplina</h2>
+                <p>Todo grande aventureiro começa aprendendo.</p>
+            </div>
+
+            <div class="lista-disciplinas">
+                <article class="card disciplina-portugues">
+                    <div class="icone-disciplina" aria-hidden="true">📚</div>
+                    <p class="card-categoria">LINGUAGENS</p>
+                    <h3>Português</h3>
+                    <p>
+                        Explore gramática, interpretação de texto
+                        e os mistérios da nossa língua.
+                    </p>
+                    <a class="botao botao-card"
+                       href="{{ url_for('atividade') }}">
+                        Jogar agora →
+                    </a>
+                </article>
+
+                <article class="card disciplina-matematica">
+                    <div class="icone-disciplina" aria-hidden="true">🔢</div>
+                    <p class="card-categoria">RACIOCÍNIO LÓGICO</p>
+                    <h3>Matemática</h3>
+                    <p>
+                        Resolva problemas e treine sua lógica
+                        com desafios numéricos.
+                    </p>
+                    <span class="em-breve">Em breve</span>
+                </article>
+
+                <article class="card disciplina-historia">
+                    <div class="icone-disciplina" aria-hidden="true">🏛️</div>
+                    <p class="card-categoria">HUMANIDADES</p>
+                    <h3>História</h3>
+                    <p>
+                        Viaje pelo tempo e descubra os acontecimentos
+                        que moldaram o mundo.
+                    </p>
+                    <span class="em-breve">Em breve</span>
+                </article>
+
+                <article class="card disciplina-ciencias">
+                    <div class="icone-disciplina" aria-hidden="true">🔬</div>
+                    <p class="card-categoria">DESCOBERTAS</p>
+                    <h3>Ciências</h3>
+                    <p>
+                        Investigue a natureza, o universo
+                        e o funcionamento da vida.
+                    </p>
+                    <span class="em-breve">Em breve</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre" class="secao-sobre">
+            <div class="sobre-simbolo" aria-hidden="true">✦</div>
+
+            <div>
+                <p class="etiqueta">SOBRE O PROJETO</p>
+                <h2>Conhecimento que vira experiência.</h2>
+                <p>
+                    O NexaQuest é uma plataforma educacional que une
+                    tecnologia, desafios e aprendizagem para tornar
+                    o estudo mais interativo e envolvente.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <a class="logo logo-rodape" href="{{ url_for('index') }}">
+            NexaQuest<span>.</span>
+        </a>
+        <p>Aprenda. Jogue. Evolua.</p>
+        <p>&copy; 2026 NexaQuest</p>
+    </footer>
+</body>
+</html>

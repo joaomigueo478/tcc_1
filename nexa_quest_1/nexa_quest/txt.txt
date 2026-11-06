@@ -1,0 +1,58 @@
+<div class="marca">
+                <div class="marca-icone" aria-hidden="true">
+                    <span class="controle controle-um">✕</span>
+                    <span class="controle controle-dois">✥</span>
+                </div>
+
+                <h1>NexaQuest</h1>
+                <p>Aprenda. Jogue. Evolua.</p>
+            </div>
+
+            <div class="marca">
+                <video
+                    class="video-logo"
+                    autoplay
+                    mute
+                    loop
+                    playsinline
+                    aria-label="Animação da logo NexaQuest">
+                    <!-- Adicione o caminho do vídeo quando ele estiver pronto -->
+                </video>
+</div>
+
+
+
+
+
+
+-------------------------Mascote:----------------------------
+
+
+html vídeo:
+<div class="mascote">
+    <video autoplay muted loop playsinline>
+        <source src="../static/videos/camaleao.mp4"
+                type="video/mp4">
+    </video>
+</div>
+
+
+
+
+.mascote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mascote img {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+---------link css inscrição-----------
+ <link rel="stylesheet" href="../static/css/inscricao.css">

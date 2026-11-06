@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos | NexaQuest</title>
+
+    <style>
+        :root {
+            --creme: #F0F0DA;
+            --verde: #98D611;
+            --roxo-escuro: #551887;
+            --roxo: #721ABF;
+            --violeta: #8A2BE2;
+            --texto: #342044;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .cabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            padding: 20px 8%;
+            background: var(--creme);
+            border-bottom: 1px solid #dedbc9;
+        }
+
+        .logo {
+            color: var(--roxo-escuro);
+            font-size: 1.7rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--roxo);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .menu a {
+            color: var(--roxo-escuro);
+            font-weight: 600;
+        }
+
+        .menu a:hover,
+        .menu .ativo {
+            color: var(--roxo);
+        }
+
+        .botao {
+            display: inline-block;
+            background: var(--verde);
+            color: var(--roxo-escuro);
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 800;
+            transition: 0.2s;
+        }
+
+        .botao:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+
+        .introducao {
+            text-align: center;
+            padding: 85px 8% 55px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            color: var(--roxo);
+            background: #e6d5f6;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .introducao h1 {
+            color: var(--roxo-escuro);
+            font-size: clamp(2.3rem, 5vw, 3.8rem);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .introducao h1 span {
+            color: var(--roxo);
+        }
+
+        .introducao p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #68547b;
+            font-size: 1.1rem;
+        }
+
+        .recursos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            padding: 25px 8% 90px;
+        }
+
+        .cartao {
+            background: #fafaf0;
+            padding: 30px;
+            border: 1px solid #ded5e8;
+            border-radius: 22px;
+            transition: 0.25s;
+        }
+
+        .cartao:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px #55188716;
+        }
+
+        .icone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 62px;
+            height: 62px;
+            background: #e8d9f8;
+            color: var(--roxo);
+            border-radius: 18px;
+            font-size: 1.9rem;
+            margin-bottom: 22px;
+        }
+
+        .cartao:nth-child(2) .icone,
+        .cartao:nth-child(5) .icone {
+            background: var(--verde);
+            color: var(--roxo-escuro);
+        }
+
+        .cartao h2 {
+            color: var(--roxo-escuro);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .cartao p {
+            color: #68547b;
+            margin-bottom: 18px;
+        }
+
+        .detalhe {
+            color: var(--roxo);
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        .chamada {
+            margin: 0 8% 85px;
+            padding: 45px 25px;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(
+                120deg,
+                var(--roxo-escuro),
+                var(--roxo),
+                var(--violeta)
+            );
+        }
+
+        .chamada h2 {
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            margin-bottom: 12px;
+        }
+
+        .chamada p {
+            margin-bottom: 25px;
+            color: var(--creme);
+        }
+
+        .rodape {
+            padding: 25px 8%;
+            text-align: center;
+            color: #68547b;
+            border-top: 1px solid #dedbc9;
+        }
+
+        .rodape strong {
+            color: var(--roxo-escuro);
+        }
+
+        @media (max-width: 850px) {
+            .cabecalho {
+                flex-direction: column;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .recursos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 580px) {
+            .recursos {
+                grid-template-columns: 1fr;
+            }
+
+            .introducao {
+                padding-top: 55px;
+            }
+
+            .menu {
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+
+            .chamada {
+                margin-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <a href="index.html" class="logo">Nexa<span>Quest</span></a>
+
+        <nav class="menu" aria-label="Menu principal">
+            <a href="inicio.html">Início</a>
+            <a href="sobre.html">Sobre nós</a>
+            <a href="recursos.html" class="ativo">Recursos</a>
+            <a href="atividade.html">Atividades</a>
+            <a href="inscricao.html" class="botao">Cadastrar</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="introducao">
+            <span class="etiqueta">EXPLORE O NEXAQUEST</span>
+
+            <h1>Aprender pode ser uma <span>aventura!</span></h1>
+
+            <p>
+                Descubra ferramentas que transformam o estudo em uma
+                experiência mais divertida, interativa e envolvente.
+                Aqui, cada desafio é uma oportunidade de evoluir.
+            </p>
+        </section>
+
+        <section class="recursos" aria-label="Recursos da plataforma">
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">📚</div>
+                <h2>Aprenda por disciplinas</h2>
+                <p>
+                    Explore conteúdos de diferentes matérias escolares
+                    e amplie seus conhecimentos no seu ritmo.
+                </p>
+                <span class="detalhe">Conhecimento para todos</span>
+            </article>
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">🎮</div>
+                <h2>Estude jogando</h2>
+                <p>
+                    Pratique o que aprendeu por meio de atividades
+                    e desafios que deixam o estudo mais dinâmico.
+                </p>
+                <span class="detalhe">Aprenda na prática</span>
+            </article>
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">🧠</div>
+                <h2>Teste seus conhecimentos</h2>
+                <p>
+                    Responda a perguntas, exercite a memória e
+                    descubra quais assuntos merecem mais atenção.
+                </p>
+                <span class="detalhe">Desafie sua mente</span>
+            </article>
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">🚀</div>
+                <h2>Evolua no seu ritmo</h2>
+                <p>
+                    Avance gradualmente, revise os conteúdos
+                    e construa sua aprendizagem etapa por etapa.
+                </p>
+                <span class="detalhe">Um passo de cada vez</span>
+            </article>
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">🏆</div>
+                <h2>Supere desafios</h2>
+                <p>
+                    Transforme seus estudos em metas e use cada
+                    atividade como uma chance de superar limites.
+                </p>
+                <span class="detalhe">Seu próximo nível espera</span>
+            </article>
+
+            <article class="cartao">
+                <div class="icone" aria-hidden="true">🌎</div>
+                <h2>Conhecimento para todos</h2>
+                <p>
+                    Uma proposta de aprendizagem para diferentes
+                    idades, interesses e momentos da vida.
+                </p>
+                <span class="detalhe">Sempre é tempo de aprender</span>
+            </article>
+
+        </section>
+
+        <section class="chamada">
+            <h2>Pronto para começar sua jornada?</h2>
+            <p>Descubra o que você pode conquistar com o NexaQuest.</p>
+            <a href="inscricao.html" class="botao">Quero começar!</a>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p><strong>NexaQuest</strong> — Aprenda. Jogue. Evolua.</p>
+        <p>Conhecimento é o começo de toda aventura.</p>
+    </footer>
+
+</body>
+</html>

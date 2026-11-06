@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produtos | NexaQuest</title>
+
+    <style>
+        :root {
+            --creme: #F0EEE4;
+            --verde: #98D611;
+            --roxo-escuro: #551887;
+            --roxo: #721ABF;
+            --violeta: #8A2BE2;
+            --texto: #342044;
+            --texto-suave: #68547B;
+            --branco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            line-height: 1.6;
+            overflow-x: clip;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ===== APRESENTAÇÃO PRINCIPAL ===== */
+
+        .hero {
+            display: grid;
+            grid-template-columns: 39% 61%;
+            min-height: 650px;
+            background: var(--creme);
+        }
+
+        /* Painel roxo da esquerda */
+
+        .painel-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            min-height: 650px;
+            padding: 35px;
+            background: linear-gradient(
+                145deg,
+                var(--roxo-escuro),
+                var(--roxo),
+                var(--violeta)
+            );
+            border-radius: 0 45% 45% 0 / 0 22% 22% 0;
+            z-index: 2;
+        }
+
+        .forma-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: min(100%, 340px);
+            aspect-ratio: 0.78;
+            overflow: hidden;
+            border-radius: 48% 48% 48% 12% / 35% 35% 35% 12%;
+            background: linear-gradient(
+                160deg,
+                #8A2BE2,
+                #721ABF 55%,
+                #551887
+            );
+            box-shadow: 12px 15px 0 rgba(52, 32, 68, 0.15);
+        }
+        .imagem-logo {
+            display: block;
+            width: 75%;
+            max-width: 260px;
+            max-height: 260px;
+            height: auto;
+            object-fit: contain;
+        }
+
+
+        .forma-visual::before {
+            content: "";
+            position: absolute;
+            inset: 12%;
+            border: 2px solid rgba(240, 238, 228, 0.22);
+            border-radius: 48% 48% 48% 12% / 35% 35% 35% 12%;
+        }
+
+        .simbolo-central {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 145px;
+            height: 145px;
+            border: 3px solid var(--creme);
+            border-radius: 38px;
+            color: var(--verde);
+            font-size: 90px;
+            font-weight: 900;
+            transform: rotate(-8deg);
+        }
+
+        .simbolo-central::before {
+            content: "";
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--verde);
+            border-radius: 50%;
+        }
+
+        .simbolo-central span {
+            transform: rotate(8deg);
+        }
+
+        .texto-visual {
+            position: absolute;
+            bottom: 32px;
+            left: 20px;
+            right: 20px;
+            color: var(--creme);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* Painel de conteúdo */
+
+        .painel-conteudo {
+            display: flex;
+            flex-direction: column;
+            min-width: 5px;
+            padding: 35px 7% 55px 5%;
+        }
+
+        /* Menu superior */
+
+        .cabecalho {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: auto;
+        }
+
+        .logo {
+            display: none;
+            color: var(--roxo-escuro);
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: var(--roxo);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:15px;
+            padding: 5px;
+            border-radius: 40px;
+            background: var(--roxo-escuro);
+        }
+
+        .menu a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 13px;
+            border-radius: 30px;
+            color: var(--creme);
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .menu a:hover,
+        .menu a.ativo {
+            background: var(--verde);
+            color: var(--roxo-escuro);
+        }
+
+        .botao-perfil {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            background: var(--roxo-escuro);
+            color: var(--verde);
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .botao-perfil:hover {
+            transform: scale(1.08);
+        }
+
+        /* Texto principal */
+
+        .conteudo-principal {
+            width: 100%;
+            max-width: 650px;
+            margin: auto 0;
+            padding: 65px 0 45px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--roxo);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .conteudo-principal h1 {
+            margin-bottom: 8px;
+            color: var(--roxo-escuro);
+            font-size: clamp(30px, 3.3vw, 44px);
+            font-weight: 900;
+            line-height: 1.15;
+        }
+
+        .conteudo-principal h2 {
+            margin-bottom: 24px;
+            color: var(--texto);
+            font-size: clamp(19px, 2vw, 27px);
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .conteudo-principal p {
+            max-width: 610px;
+            margin-bottom: 20px;
+            font-size: clamp(15px, 1.4vw, 19px);
+            line-height: 1.65;
+        }
+
+        .destaque {
+            color: var(--roxo);
+            font-weight: 800;
+        }
+
+        .botao-principal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 52px;
+            margin-top: 25px;
+            padding: 14px 25px;
+            border-radius: 40px;
+            background: var(--roxo-escuro);
+            color: var(--verde);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .botao-principal:hover {
+            transform: translateY(-3px);
+            background: var(--roxo);
+        }
+
+        .seta {
+            font-size: 20px;
+        }
+
+        /* ===== SEÇÃO DE RECURSOS ===== */
+
+        .secao-recursos {
+            padding: 80px 8%;
+            background: var(--creme);
+        }
+
+        .cabecalho-recursos {
+            max-width: 720px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .cabecalho-recursos .etiqueta {
+            margin-bottom: 10px;
+        }
+
+        .cabecalho-recursos h2 {
+            margin-bottom: 15px;
+            color: var(--roxo-escuro);
+            font-size: clamp(27px, 4vw, 38px);
+            line-height: 1.2;
+        }
+
+        .cabecalho-recursos p {
+            color: var(--texto-suave);
+            font-size: 16px;
+        }
+
+        .recursos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .cartao {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 28px;
+            border: 1px solid #DED5E8;
+            border-radius: 22px;
+            background: #FAFAF0;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .cartao:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(85, 24, 135, 0.09);
+        }
+
+        .icone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            background: #E8D9F8;
+            font-size: 30px;
+        }
+
+        .cartao:nth-child(2) .icone,
+        .cartao:nth-child(5) .icone {
+            background: var(--verde);
+        }
+
+        .cartao h3 {
+            margin-bottom: 10px;
+            color: var(--roxo-escuro);
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .cartao p {
+            flex: 1;
+            margin-bottom: 18px;
+            color: var(--texto-suave);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .detalhe {
+            color: var(--roxo);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        /* ===== CHAMADA FINAL ===== */
+
+        .chamada {
+            margin: 0 8% 80px;
+            padding: 48px 25px;
+            border-radius: 25px;
+            background: linear-gradient(
+                120deg,
+                var(--roxo-escuro),
+                var(--roxo),
+                var(--violeta)
+            );
+            color: var(--branco);
+            text-align: center;
+        }
+
+        .chamada h2 {
+            margin-bottom: 12px;
+            font-size: clamp(24px, 4vw, 35px);
+            line-height: 1.25;
+        }
+
+        .chamada p {
+            margin-bottom: 24px;
+            color: var(--creme);
+        }
+
+        .botao-claro {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 35px;
+            background: var(--verde);
+            color: var(--roxo-escuro);
+            font-weight: 900;
+            transition: transform 0.2s;
+        }
+
+        .botao-claro:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        .rodape {
+            padding: 28px 8%;
+            border-top: 1px solid #DED5E8;
+            color: var(--texto-suave);
+            text-align: center;
+        }
+
+        .rodape p + p {
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        .rodape strong {
+            color: var(--roxo-escuro);
+        }
+
+        /* ===== TABLETS ===== */
+
+        @media (max-width: 1050px) {
+            .hero {
+                grid-template-columns: 34% 66%;
+                min-height: 600px;
+            }
+
+            .painel-visual {
+                min-height: 600px;
+                padding: 22px;
+            }
+
+            .forma-visual {
+                width: 100%;
+            }
+
+            .painel-conteudo {
+                padding: 28px 5% 40px 4%;
+            }
+
+            .cabecalho {
+                gap: 12px;
+            }
+
+            .menu a {
+                padding: 8px 20px;
+                font-size: 11px;
+            }
+
+            .botao-perfil {
+                width: 38px;
+                height: 38px;
+            }
+
+            .recursos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* ===== CELULARES E TABLETS VERTICAIS ===== */
+
+        @media (max-width: 760px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .painel-visual {
+                min-height: 260px;
+                padding: 28px 20px 42px;
+                border-radius: 0 0 35% 8% / 0 0 14% 5%;
+            }
+
+            .forma-visual {
+                width: 150px;
+                aspect-ratio: 1;
+                border-radius: 40% 40% 40% 12%;
+            }
+
+            .forma-visual::before {
+                inset: 9%;
+            }
+
+            .simbolo-central {
+                width: 75px;
+                height: 75px;
+                border-radius: 22px;
+                font-size: 47px;
+            }
+
+            .simbolo-central::before {
+                top: -10px;
+                right: -10px;
+                width: 24px;
+                height: 24px;
+            }
+
+            .texto-visual {
+                bottom: 13px;
+                font-size: 10px;
+            }
+
+            .painel-conteudo {
+                padding: 20px 6% 55px;
+            }
+
+            .cabecalho {
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 14px;
+                margin-bottom: 0;
+            }
+
+            .logo {
+                display: block;
+            }
+
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .menu a {
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .botao-perfil {
+                width: 40px;
+                height: 40px;
+            }
+
+            .conteudo-principal {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 48px 0 0;
+            }
+
+            .conteudo-principal h1 {
+                font-size: clamp(30px, 7vw, 40px);
+            }
+
+            .conteudo-principal h2 {
+                font-size: 23px;
+            }
+
+            .conteudo-principal p {
+                font-size: 16px;
+            }
+
+            .secao-recursos {
+                padding: 55px 6%;
+            }
+
+            .chamada {
+                margin: 0 6% 55px;
+            }
+        }
+
+        /* ===== CELULARES ESTREITOS ===== */
+
+        @media (max-width: 480px) {
+            .painel-visual {
+                min-height: 225px;
+            }
+
+            .painel-conteudo {
+                padding-right: 5%;
+                padding-left: 5%;
+            }
+
+            .cabecalho {
+                gap: 10px;
+            }
+
+            .menu {
+                gap: 3px;
+                padding: 4px;
+            }
+
+            .menu a {
+                padding: 8px 9px;
+                font-size: 10px;
+            }
+
+            .conteudo-principal {
+                padding-top: 38px;
+            }
+
+            .conteudo-principal h1 {
+                font-size: 31px;
+            }
+
+            .conteudo-principal h2 {
+                font-size: 21px;
+            }
+
+            .botao-principal {
+                width: 100%;
+                padding: 13px 15px;
+                font-size: 12px;
+            }
+
+            .recursos {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 16px;
+            }
+
+            .cartao {
+                padding: 24px;
+            }
+
+            .chamada {
+                padding: 35px 20px;
+            }
+
+            .rodape {
+                padding: 25px 6%;
+            }
+        }
+
+        /* Acessibilidade: respeita a preferência por
+           menos animações do dispositivo */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <!-- APRESENTAÇÃO PRINCIPAL -->
+        <section class="hero" id="inicio">
+
+            <div class="painel-visual" arial-label="Identidade visual do NexaQuest">
+
+                <p class="texto-visual">
+                    APRENDA. JOGUE. EVOLUA.
+                </p>
+            </div>
+
+            <div class="painel-conteudo">
+
+                <header class="cabecalho">
+                    <a href="index.html" class="logo">
+                        Nexa<span>Quest</span>
+                    </a>
+
+                    <nav class="menu" aria-label="Menu principal">
+                        <a href="inicio.html">Início</a>
+                        <a href="produtos.html" class="ativo" aria-current="page">
+                            Produtos
+                        </a>
+                        <a href="sobre.html">Sobre nós</a>
+                        <a href="inscricao.html">Login</a>
+                    </nav>
+
+                    <a
+                        href="usuario.html"
+                        class="botao-perfil"
+                        aria-label="Acessar cadastro"
+                        title="Acessar cadastro"
+                    >
+                        ♟
+                    </a>
+                </header>
+
+                <div class="conteudo-principal">
+                    <span class="etiqueta">Produtos</span>
+
+                    <h1>O que é o NexaQuest</h1>
+
+                    <h2>O que você pode aprender por aqui?</h2>
+
+                    <p>
+                        O NexaQuest é uma plataforma digital interativa que
+                        une <span class="destaque">aprendizado, entretenimento
+                        e gamificação.</span> Por meio de missões, desafios
+                        e conquistas, você aprende de forma leve e divertida,
+                        evoluindo a cada etapa. e compartilhando suas experiências.
+                        Mais do que um jogo ou aplicativo educativo, o Nexa Quest transforma
+                        o conhecimento em uma jornada dinâmica, criativa e envolvente.                   </p>
+
+                    <p>
+                        Explore disciplinas escolares, pratique seus
+                        conhecimentos e transforme seus estudos em uma
+                        jornada dinâmica, criativa e envolvente.
+                    </p>
+
+                    <a href="#beneficios" class="botao-principal">
+                        Adicionar ao carrinho
+                        <span class="seta" aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RECURSOS DA PLATAFORMA -->
+        <section class="secao-recursos" id="beneficios">
+
+            <div class="cabecalho-recursos">
+                <span class="etiqueta">SUA JORNADA COMEÇA AQUI</span>
+
+                <h2>Descubra tudo o que você pode conquistar</h2>
+
+                <p>
+                    Cada recurso foi pensado para deixar sua experiência
+                    de aprendizagem mais interativa e interessante.
+                </p>
+            </div>
+
+            <div class="recursos">
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">📚</div>
+                    <h3>Aprenda por disciplinas</h3>
+                    <p>
+                        Explore conteúdos de diferentes matérias escolares
+                        e amplie seus conhecimentos no seu ritmo.
+                    </p>
+                    <span class="detalhe">Conhecimento para todos</span>
+                </article>
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">🎮</div>
+                    <h3>Estude jogando</h3>
+                    <p>
+                        Pratique o que aprendeu por meio de atividades
+                        e desafios que deixam o estudo mais dinâmico.
+                    </p>
+                    <span class="detalhe">Aprenda na prática</span>
+                </article>
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">🧠</div>
+                    <h3>Teste seus conhecimentos</h3>
+                    <p>
+                        Responda a perguntas, exercite a memória e
+                        descubra quais assuntos merecem mais atenção.
+                    </p>
+                    <span class="detalhe">Desafie sua mente</span>
+                </article>
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">🚀</div>
+                    <h3>Evolua no seu ritmo</h3>
+                    <p>
+                        Avance gradualmente, revise os conteúdos
+                        e construa sua aprendizagem etapa por etapa.
+                    </p>
+                    <span class="detalhe">Um passo de cada vez</span>
+                </article>
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">🏆</div>
+                    <h3>Supere desafios</h3>
+                    <p>
+                        Transforme seus estudos em metas e use cada
+                        atividade como uma chance de superar limites.
+                    </p>
+                    <span class="detalhe">Seu próximo nível espera</span>
+                </article>
+
+                <article class="cartao">
+                    <div class="icone" aria-hidden="true">🌎</div>
+                    <h3>Conhecimento para todos</h3>
+                    <p>
+                        Uma proposta de aprendizagem para diferentes
+                        idades, interesses e momentos da vida.
+                    </p>
+                    <span class="detalhe">Sempre é tempo de aprender</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CHAMADA FINAL -->
+        <section class="chamada">
+            <h2>Pronto para começar sua jornada?</h2>
+            <p>
+                Descubra o que você pode conquistar com o NexaQuest.
+            </p>
+            <a href="inscricao.html" class="botao-claro">
+                Quero começar!
+            </a>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>
+            <strong>NexaQuest</strong> — Aprenda. Jogue. Evolua.
+        </p>
+        <p>Conhecimento é o começo de toda aventura.</p>
+        <p>© 2026 NexaQuest. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
